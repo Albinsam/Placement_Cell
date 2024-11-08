@@ -1,0 +1,51 @@
+.job-results {
+  padding: 20px;
+  background: linear-gradient(rgba(255, 255, 255, 0.99), rgba(255, 255, 255, 0.2)), 
+              url(../images/bgimage.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  box-sizing: border-box;
+  margin-top: 70px;
+  min-height: 100vh; /* Full viewport height */
+}
+.job-card {
+  background-color: rgb(232, 249, 255);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  width: 100%; /* Full width within the grid cell */
+  height: auto; /* Allows card to adapt to content */
+}
+
+.job-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.job-id {
+  color: #4B4B4B;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.job-name {
+  color: #0366D6;
+  font-size: 24px;
+  font-weight: 700;
+  margin: 10px 0;
+}
+
+.job-description {
+  color: black;
+  font-size: 16px;
+  line-height: 1.5;
+
+}
+.job-cards-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 cards per row */
+  gap: 20px; /* Space between each card */
+  width: 100%;
+}

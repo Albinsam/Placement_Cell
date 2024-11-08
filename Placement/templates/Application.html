@@ -1,0 +1,70 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'css/application.css' %}">
+  <link rel="stylesheet" href="{% static 'css/index.css' %}">
+  <title>Apply for Job</title>
+</head>
+<body>
+  <header>
+    <div class="navbar">
+        <div class="left-side">
+            <img src="{% static 'images/logo.jpg' %}" alt="Logo" class="logo">
+            <h1>Placement Portal</h1>
+        </div>
+        <div class="middle-side">
+          <div class="home"><a href="#">Home</a></div>
+          <div><a href="#">About Us</a></div>
+          <div class="contact"><a href="#">Contact Us</a></div>
+        </div>
+        <div class="right-side">
+            <!-- <div class="logindiv"><a href="#" class="login">Login</a></div>
+            <div class="registerdiv"><a href="#" class="register">Register</a></div> -->
+        </div>
+        <div class="logoutdiv"> 
+          {% if request.session.user %}
+              <a href="{% url 'logout' %}" >Logout</a>
+          {% endif %}
+      </div>
+    </div>
+  </header>
+
+  <section class="job-application">
+    <h2>Apply Here</h2>
+    <form action="{% url 'app' %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+        <!-- Job Name Field -->
+        <div class="form-group">
+            {{ form.job_name.label_tag }}
+            {{ form.job_name }}
+        </div>
+        
+        <!-- Upload Resume Field -->
+        <div class="form-group">
+            {{ form.resume.label_tag }}
+            {{ form.resume }}
+        </div>
+        
+        <!-- Cover Letter Text Area -->
+        <div class="form-group">
+            {{ form.cover_letter_text.label_tag }}
+            {{ form.cover_letter_text }}
+        </div>
+
+        <!-- Upload Cover Letter as File -->
+        <div class="form-group">
+            {{ form.cover_letter_file.label_tag }}
+            {{ form.cover_letter_file }}
+        </div>
+        
+        <!-- Submit Button -->
+        <button type="submit">Submit Application</button>
+    </form>
+  </section>
+
+</body>
+</html>

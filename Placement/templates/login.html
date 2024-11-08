@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title>Login Form</title>
+    <link rel="stylesheet" href="{% static 'css/style2.css' %}">
+</head>
+<body>
+    <div class="wrapper">
+        <form action="{% url 'login' %}" method="post">
+            {% csrf_token %}
+            <div class="title">Login Form</div>
+
+            <!-- Email Field -->
+            <div class="field">
+                <input type="text" name="username" required>
+                <label for="username">Email Address</label>
+                {% for error in form.username.errors %}
+                    <div class="error">{{ error }}</div>
+                {% endfor %}
+            </div>
+
+            <!-- Password Field -->
+            <div class="field">
+                <input type="password" name="password" required>
+                <label for="password">Password</label>
+                {% for error in form.password.errors %}
+                    <div class="error">{{ error }}</div>
+                {% endfor %}
+            </div>
+
+            <!-- <div class="content">
+                <div class="checkbox">
+                    <input type="checkbox" id="remember-me">
+                    <label for="remember-me">Remember me</label>
+                </div>
+                <div class="pass-link">
+                    <a href="#">Forgot password?</a>
+                </div>
+            </div> -->
+
+            <div class="field">
+                <input type="submit" value="Login">
+            </div>
+
+            <div class="signup-link">
+                Not a member? <a href="{% url 'reg1' %}">Signup now</a>
+            </div>
+
+            <!-- Display non-field errors -->
+            {% if form.non_field_errors %}
+                <div class="error">{{ form.non_field_errors }}</div>
+            {% endif %}
+        </form>
+    </div>
+</body>
+</html>

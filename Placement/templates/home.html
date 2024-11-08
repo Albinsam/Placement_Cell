@@ -1,0 +1,127 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="{% static 'css/style.css' %}"> -->
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <div class="left-side">
+                <div class="home"><a>Home</a></div>
+                <div class=""><a>About Us</a></div>
+                <div class="contact"><a>Contact Us</a></div>
+            </div>
+            <div class="right-side">
+                <div class="logindiv"><a href="{% url 'login' %}" class="login">Login</a></div>
+                <div class="registerdiv"><a href="{% url 'reg1' %}" class="register">Register</a></div>
+                <div>{% if request.session.user %}
+                    <a href="{% url 'logout' %}">Logout</a>
+                {% else %}
+                    <!-- <p>User is not authenticated.</p> -->
+                {% endif %}
+                </div>
+
+            </div>
+        </div>
+    </header>
+    <section>
+        <div class="container">
+            <div class="content">
+                <h3>Finding Your Most<br>Exciting Job Placement</h3>
+                <input type="text" class="content-input" placeholder="Enter a Job">
+            </div>
+        </div>
+    </section>
+    <style>*{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+    
+    
+    body{
+        position: relative;
+    }
+    
+    .navbar{
+        display: flex;
+        width: 100%;
+        height: 80px;
+        align-items: center;
+        justify-content: space-between;
+        color: rgb(4, 100, 145);
+        font-size: 22px;
+        font-family: Arial;
+        font-weight:400;
+        background: white;
+        /* linear-gradient(rgba(253, 253, 253, 0.5), rgba(165, 213, 242, 0.5)) Color overlay */
+    }
+    
+    .left-side{
+        display: flex;
+        justify-content: space-between;
+        flex: 1;
+        padding-left: 50px;
+        margin-right: 50px;
+    }
+    .right-side{
+        display: flex;
+        justify-content: space-around;
+        width: 35%;
+        margin-left: 50px;
+    }
+    
+    /* .login{
+        padding: 10px 20px;
+        background-color: rgb(2, 140, 246);
+        font-size: 15px;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        text-decoration: none;
+    } */
+    .register,.login{
+        padding: 12px 24px;
+        background-color: rgb(2, 140, 246);
+        font-size: 17px;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        text-decoration: none;
+    }
+    
+    .container{
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        background: 
+           /* linear-gradient(rgba(121, 182, 232, 0.5), rgba(236, 236, 236, 0.5)),  Color overlay */
+            url("{% static 'images/h1_hero.jpg' %}");
+        background-repeat: no-repeat;
+        background-size: cover;
+    
+    }
+    
+    .content{
+        margin: auto;
+    }
+    
+    .content h3{
+        font-size: 60px;
+        width: 100%;
+    }
+    .content input{
+        font-size: 20px;
+        padding: 12px 20px;
+        border-radius: 5px;
+        border: 1px solid rgb(191, 190, 190);
+        margin-top: 20px;
+        width: 100%;
+        outline: none;
+    }</style>
+</body>
+</html>

@@ -1,0 +1,180 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .wrapper {
+            background-color: #fff;
+            padding: 2em;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+        }
+        .title {
+            font-size: 1.5em;
+            margin-bottom: 1em;
+            text-align: center;
+        }
+        .field {
+            margin-bottom: 1em;
+        }
+        .field input, .field select {
+            width: 100%;
+            padding: 0.75em;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1em;
+        }
+        .field label {
+            display: block;
+            margin-bottom: 0.5em;
+            font-weight: bold;
+        }
+        .error-list {
+            color: #ff0000;
+            margin-bottom: 1em;
+        }
+        .field input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 1em;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+        .field input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        .content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1em;
+        }
+        .signup-link {
+            text-align: center;
+        }
+        .signup-link a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .signup-link a:hover {
+            text-decoration: underline;
+        }
+        .pass-link {
+            text-align: center;
+        }
+        .pass-link a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .pass-link a:hover {
+            text-decoration: underline;
+        }
+        .checkbox label {
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="title">
+            Register
+        </div>
+        <form method="POST" action="{% url 'register' %}">
+            {% csrf_token %}
+
+            <!-- Display form errors -->
+            {% if form.errors %}
+                <div class="error-list">
+                    {% for field in form %}
+                        {% if field.errors %}
+                            <div>{{ field.label_tag }}: {{ field.errors }}</div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+            <!-- Form fields -->
+            <div class="field">
+                {{ form.fullname.label_tag }}
+                {{ form.fullname }}
+            </div>
+            <div class="field">
+                {{ form.email.label_tag }}
+                {{ form.email }}
+            </div>
+            <div class="field">
+                {{ form.age.label_tag }}
+                {{ form.age }}
+            </div>
+            <div class="field">
+                {{ form.phno.label_tag }}
+                {{ form.phno }}
+            </div>
+            <div class="field">
+                {{ form.clgname.label_tag }}
+                {{ form.clgname }}
+            </div>
+            <div class="field">
+                {{ form.dname.label_tag }}
+                {{ form.dname }}
+            </div>
+            <div class="field">
+                {{ form.skill.label_tag }}
+                {{ form.skill }}
+            </div>
+            <div class="field">
+                {{ form.password.label_tag }}
+                {{ form.password }}
+            </div>
+            <div class="field">
+                {{ form.confirm_password.label_tag }}
+                {{ form.confirm_password }}
+            </div>
+
+            <!-- Submit button -->
+            <div class="field">
+                <input type="submit" value="Register">
+            </div>
+
+            <!-- Additional links and info -->
+            <div class="content">
+                <div class="checkbox">
+                    <input type="checkbox" id="remember-me">
+                    <label for="remember-me">Remember me</label>
+                </div>
+                <div class="pass-link">
+                    <a href="">Forgot password?</a>
+                </div>
+            </div>
+
+            <div class="signup-link">
+                Already a member? <a href="{% url 'login' %}">Login now</a>
+            </div>
+        </form>
+
+        <!-- Display messages -->
+        <div class="message">
+            {% for message in messages %}
+                <p>{{ message }}</p>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

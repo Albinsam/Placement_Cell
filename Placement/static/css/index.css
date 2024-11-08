@@ -1,0 +1,146 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  position: relative;
+}
+.navbar {
+  display: flex;
+  width: 100%;
+  height: 70px;
+  align-items: center;
+  justify-content: space-around;
+  color: rgb(3, 68, 124);
+  font-size: 20px;
+  font-family: Arial;
+  font-weight: 400;
+  font-style: italic;
+  position: fixed; /* Keeps navbar fixed at the top */
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000; /* Ensures the navbar is above other elements */
+  transition: background-color 0.3s ease-in-out; /* Smooth transition effect */
+  
+}
+
+
+
+.left-side{
+  display: flex;
+  align-items: center;
+  margin-left: 5%;
+  width: 30%;
+  
+}
+
+.left-side h1{
+  font-size: 20px;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.logo{
+  object-fit: cover;
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+  border-radius: 30px;
+}
+
+  
+.middle-side a{
+  text-decoration: none;
+  font-size: 23px;
+  color: rgb(4, 60, 117);
+  font-weight: bold;
+}
+
+.middle-side a:hover{
+  color: rgb(7, 108, 203);
+}
+
+.middle-side{
+  display: flex;
+  justify-content: space-around;
+  flex: 1;
+}
+
+.right-side{
+  display: flex;
+  justify-content: space-between;
+  width: 15%;
+  margin-right: 5%;
+}
+
+
+.register, .login {
+  padding: 12px 24px;
+  background-color:rgb(36, 111, 239);
+  font-weight: 700;
+  font-size: 17px;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  text-decoration: none;
+  margin-left: 30px;
+}
+
+.login:hover {
+  background-color: rgb(65, 132, 246);
+}
+.register:hover {
+  background-color: rgb(65, 132, 246);
+}
+
+
+.container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  background: linear-gradient(rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.1)), 
+  url(../images/bgimage.png);
+    background-size: cover;
+    background-position: center;
+}
+
+
+.content {
+  margin: auto;
+  
+}
+.content h3 {
+  font-size: 60px;
+  color: rgb(12, 12, 12);
+  font-family:Arial, Helvetica, sans-serif;
+}
+
+.content input, .search-button {
+  font-size: 20px;
+  padding: 15px 30px;
+  border-radius: 10px;
+  border: 1px solid rgb(171, 171, 171);
+  width: 100%;
+  outline: none;
+  font-family:Arial, Helvetica, sans-serif;
+  
+  
+}
+
+.content input{
+  margin-top: 20px;
+}
+.search-button {
+  display: block;
+  background-color: rgb(2, 140, 246);
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  border: none;
+  padding: 12px 24px;
+  cursor: pointer;
+ 
+}
+

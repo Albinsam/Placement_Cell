@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register Form</title>
+    <link rel="stylesheet" href="{% static 'css/style2.css' %}">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="title">Register Form</div>
+        <form method="POST" action="{% url 'reg1' %}">
+            {% csrf_token %}
+
+            <!-- Non-field errors -->
+            {% if form.non_field_errors %}
+                <div class="error">{{ form.non_field_errors }}</div>
+            {% endif %}
+
+            <!-- Field-by-field errors and form fields -->
+            {% for field in form %}
+                <div class="field">
+                    {{ field.label_tag }}
+                    {% for error in field.errors %}
+                        <div class="error">{{ error }}</div>
+                    {% endfor %}
+                    {{ field }}
+                </div>
+            {% endfor %}
+
+            <div class="field">
+                <input type="submit" value="Register">
+            </div>
+
+            <div class="signup-link">Already a member? <a href="{% url 'login' %}">Login now</a></div>
+        </form>
+    </div>
+</body>
+</html>

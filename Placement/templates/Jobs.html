@@ -1,0 +1,148 @@
+<!-- {% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'css/jobs.css' %}">
+  <link rel="stylesheet" href="{% static 'css/index.css' %}">
+  <title>Document</title>
+</head>
+<body>
+  <header>
+    <div class="navbar">
+        <div class="left-side">
+            <img src="{% static 'images/logo.jpg' %}" alt=""  class="logo"><h1>Placement Portal</h1>
+        </div>
+        <div class="middle-side">
+          <div class="home"><a href="{% url 'index' %}">Home</a></div>
+          <div class=""><a href="#">About Us</a></div>
+          <div class="contact"><a href="#">Contact Us</a></div>
+          <div class="logoutdiv"> 
+            {% if request.session.user %}
+                <a href="{% url 'logout' %}" >Logout</a>
+            {% endif %}
+        </div>
+        </div>
+        <div class="right-side"> -->
+            <!-- <div class="logindiv"><a href="" class="login">Login</a></div>
+            <div class="registerdiv"><a href="" class="register">Register</a></div> -->
+            <!-- <div class="logoutdiv"> 
+                {% if request.session.user %}
+                    <a href="" >Logout</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</header>
+  <section class="job-results">
+    <div class="job-card">
+        <a href="{% url 'app' %}"><h3 class="job-id">Job ID: 001</h3>
+        <h2 class="job-name">Frontend Developer</h2>
+        <p class="job-description">Work with a dynamic team to create intuitive, engaging UIs using React.js.</p></a>
+    </div>
+    <div class="job-card">
+        <h3 class="job-id">Job ID: 001</h3>
+        <h2 class="job-name">Frontend Developer</h2>
+        <p class="job-description">Work with a dynamic team to create intuitive, engaging UIs using React.js.</p>
+    </div>
+    <div class="job-card">
+        <h3 class="job-id">Job ID: 001</h3>
+        <h2 class="job-name">Frontend Developer</h2>
+        <p class="job-description">Work with a dynamic team to create intuitive, engaging UIs using React.js.</p>
+    </div>
+    <div class="job-card">
+        <h3 class="job-id">Job ID: 001</h3>
+        <h2 class="job-name">Frontend Developer</h2>
+        <p class="job-description">Work with a dynamic team to create intuitive, engaging UIs using React.js.</p>
+    </div>
+    <div class="job-card">
+        <h3 class="job-id">Job ID: 001</h3>
+        <h2 class="job-name">Frontend Developer</h2>
+        <p class="job-description">Work with a dynamic team to create intuitive, engaging UIs using React.js.</p>
+    </div>
+    <div class="job-card">
+        <h3 class="job-id">Job ID: 001</h3>
+        <h2 class="job-name">Frontend Developer</h2>
+        <p class="job-description">Work with a dynamic team to create intuitive, engaging UIs using React.js.</p>
+    </div>
+    <div class="job-card">
+        <h3 class="job-id">Job ID: 001</h3>
+        <h2 class="job-name">Frontend Developer</h2>
+        <p class="job-description">Work with a dynamic team to create intuitive, engaging UIs using React.js.</p>
+    </div>
+    <div class="job-card">
+        <h3 class="job-id">Job ID: 001</h3>
+        <h2 class="job-name">Frontend Developer</h2>
+        <p class="job-description">Work with a dynamic team to create intuitive, engaging UIs using React.js.</p>
+    </div>
+
+    <div class="job-card">
+        <h3 class="job-id">Job ID: 002</h3>
+        <h2 class="job-name">Backend Developer</h2>
+        <p class="job-description">Develop robust APIs and maintain databases using Node.js and MongoDB.</p>
+    </div>
+
+    <div class="job-card">
+        <h3 class="job-id">Job ID: 003</h3>
+        <h2 class="job-name">UI/UX Designer</h2>
+        <p class="job-description">Design visually appealing and user-friendly interfaces with a focus on accessibility.</p>
+    </div> -->
+
+    <!-- Add more job cards as needed -->
+<!-- </section>
+
+</body>
+</html> -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/jobs.css' %}">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <title>Job Search Results</title>
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <div class="left-side">
+                <img src="{% static 'images/logo.jpg' %}" alt="Logo" class="logo">
+                <h1>Placement Portal</h1>
+            </div>
+            <div class="middle-side">
+                <div class="home"><a href="{% url 'index' %}">Home</a></div>
+                <div class=""><a href="#">About Us</a></div>
+                <div class="contact"><a href="#">Contact Us</a></div>
+                <div class="logoutdiv"> 
+                    {% if request.session.user %}
+                        <a href="{% url 'logout' %}">Logout</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="job-results">
+        <div class="job-cards-container">
+            {% if results %}
+                {% for job in results %}
+                    <div class="job-card">
+                        <h2 class="job-name">{{ job.job_title }}</h2>
+                        <p class="job-company">Company: {{ job.company_name }}</p>
+                        <p class="job-skills">Required Skills: {{ job.skill }}</p>
+                        <p class="job-description">{{ job.description }}</p>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>No jobs found matching your search criteria.</p>
+            {% endif %}
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Placement Portal. All rights reserved.</p>
+    </footer>
+</body>
+</html>

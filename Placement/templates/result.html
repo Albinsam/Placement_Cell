@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Search</title>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <div class="left-side">
+                <img src="{% static 'images/logo.jpg' %}" alt="Logo" class="logo">
+                <h1>Placement Portal</h1>
+            </div>
+            <div class="middle-side">
+                <div class="home"><a href="{% url 'home' %}">Home</a></div>
+                <div class="about"><a href=#>About Us</a></div>
+                <div class="contact"><a href=#>Contact Us</a></div>
+            </div>
+            <div class="right-side">
+                <div class="logoutdiv">
+                    {% if request.session.user %}
+                        <a href="{% url 'logout' %}">Logout</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section>
+        <div class="container">
+            <h1>Job Search</h1>
+            <form method="get" action="{% url 'search_view' %}">
+                {{ form.as_p }}
+                <button type="submit">Search</button>
+            </form>
+
+            <h2>Search Results:</h2>
+            {% if results %}
+                <ul>
+                {% for job in results %}
+                    <li>
+                        <strong>Job Title:</strong> {{ job.job_title }}<br>
+                        <strong>Company:</strong> {{ job.company_name }}<br>
+                        <strong>Skills:</strong> {{ job.skill }}<br>
+                        <strong>Description:</strong> {{ job.description }}<br>
+                        {% if job.image %}
+                            <img src="{{ job.image.url }}" alt="{{ job.company_name }} logo" style="width: 100px; height: auto;">
+                        {% endif %}
+                    </li>
+                {% endfor %}
+                </ul>
+            {% else %}
+                <p>No jobs found matching your search criteria.</p>
+            {% endif %}
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Placement Portal. All rights reserved.</p>
+    </footer>
+</body>
+</html>

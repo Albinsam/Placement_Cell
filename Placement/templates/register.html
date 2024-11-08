@@ -1,0 +1,125 @@
+<!-- {% load static%}
+<!DOCTYPE html>
+ Created By CodingNepal -->
+<!-- <html lang="en" dir="ltr">
+   <head>
+      <meta charset="utf-8">
+      <title>Register Form </title>
+      <link rel="stylesheet" href="{% static 'css/style2.css' %}">
+   </head>
+   <body>
+      <div class="wrapper">
+         {% csrf_token %}
+         <div class="title">
+            Register Form
+         </div>
+         <form action="#">
+            <div class="field">
+               <input type="text" name="fullname" placeholder="Full Name" required>
+               <label>Full Name</label>
+            </div>
+            <div class="field">
+                <input type="text" name="email" placeholder="Email"required>
+                <label>Email Address</label>
+            </div>
+             <div class="field">
+                <input type="text" name="age" placeholder="Age"required>
+                <label>Age</label>
+            </div>
+             <div class="field">
+                <input type="text" name="phno" placeholder="Phone Number"required>
+                <label>Phone Number</label>
+            </div>
+             <div class="field">
+                <input type="text" name="clgname" placeholder="College Name"required>
+                <label>College Name</label>
+            </div>
+             <div class="field">
+                <input type="text" name="dname" placeholder="Department Name"required>
+                <label>Department</label>
+            </div>
+             
+            <div class="field">
+               <input type="text" name="skill" placeholder="Skill"required>
+               <label>Skill</label>
+           </div>
+
+            <div class="field">
+               <input type="password" name="pass" placeholder="Password"required>
+               <label>Password</label>
+            </div>
+            <div class="field">
+               <input type="password" name="pass1" placeholder="Confirm Password"required>
+               <label>Confirm Password</label>
+            </div>
+            <div class="content">
+               <div class="checkbox">
+                  <input type="checkbox" id="remember-me">
+                  <label for="remember-me">Remember me</label>
+               </div>
+               <div class="pass-link">
+                  <a href="#">Forgot password?</a>
+               </div>
+            </div>
+            <div class="field">
+               <input type="submit" value="Register">
+            </div>
+            <div class="signup-link">
+               Not a member? <a href="{% url 'login' %}">Login now</a>
+            </div>
+         </form>
+      </div>
+   </body>
+</html> --> 
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title>Register Form</title>
+    <link rel="stylesheet" href="{% static 'css/style2.css' %}">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="title">
+            Register Form
+        </div>
+        <form method="POST" action="{% url 'register' %}">
+            {% csrf_token %}
+            <!-- Display non-field errors if any -->
+            
+
+            <!-- Username field -->
+         
+                {{ form.as_p }}
+       
+
+            <!-- Submit button -->
+            <div class="field">
+                <input type="submit" value="Register">
+            </div>
+
+            <!-- Additional links and info -->
+            <div class="content">
+                <div class="checkbox">
+                    <input type="checkbox" id="remember-me">
+                    <label for="remember-me">Remember me</label>
+                </div>
+                <div class="pass-link">
+                    <a href="#">Forgot password?</a>
+                </div>
+            </div>
+
+            <div class="signup-link">
+                Already a member? <a href="{% url 'login' %}">Login now</a>
+            </div>
+        </form>
+        <div>
+            {% for message in messages %}
+            <h1>{{message}}</h1>
+            {% endfor%}
+        </div>
+    </div>
+</body>
+</html>

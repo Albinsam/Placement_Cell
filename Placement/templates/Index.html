@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <div class="left-side">
+                <img src="{% static 'images/logo.jpg' %}" alt="" class="logo">
+                <h1>Placement Portal</h1>
+            </div>
+            <div class="middle-side">
+                <div class="home"><a href="#">Home</a></div>
+                <div><a href="#">About Us</a></div>
+                <div class="contact"><a href="#">Contact Us</a></div>
+            </div>
+            <div class="right-side">
+                <div class="logoutdiv">
+                    {% if request.session.user %}
+                        <a href="{% url 'logout' %}">Logout</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <section>
+        <div class="container">
+            <div class="content">
+                <h3>Finding Your Most<br>Exciting Job Placement</h3>
+                <form method="get" action="{% url 'search_view' %}">
+                    <input type="text" name="query" class="content-input" placeholder="Enter a Job">
+                    <button type="submit" class="search-button">Search Jobs</button>
+                </form>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

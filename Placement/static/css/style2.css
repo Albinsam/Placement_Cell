@@ -1,0 +1,81 @@
+/* General styles for the form wrapper */
+.wrapper {
+  width: 100%;
+  max-width: 400px; /* Adjust to your layout */
+  margin: 0 auto; /* Center the form */
+  padding: 50px; /* Padding around the wrapper */
+  background-color: #fff; /* Background color */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+/* Title style */
+.wrapper .title {
+  font-size: 24px; /* Font size for the title */
+  margin-bottom: 20px; /* Space below the title */
+  text-align: center; /* Center the title text */
+}
+
+/* Style for form fields */
+.wrapper form .field {
+  margin-bottom: 15px; /* Space between fields */
+}
+
+/* Input field styles */
+.wrapper form .field input {
+  width: 100%; /* Full width */
+  padding: 15px 20px; /* Padding for height and comfort */
+  font-size: 17px; /* Font size for input text */
+  border: 1px solid lightgrey; /* Border color */
+  border-radius: 25px; /* Rounded corners */
+  outline: none; /* Remove outline */
+  transition: all 0.3s ease; /* Smooth transition for focus effects */
+}
+
+/* Input focus styles */
+.wrapper form .field input:focus {
+  border-color: #4158d0; /* Border color on focus */
+}
+
+/* Placeholder styles */
+.wrapper form .field input::placeholder {
+  color: #999; /* Placeholder text color */
+  opacity: 1; /* Fully visible placeholder */
+  transition: all 0.3s ease; /* Smooth transition for placeholder */
+  transform: translateY(5px); /* Move the placeholder down */
+}
+
+/* Prevent overlap on focus */
+.wrapper form .field input:focus::placeholder {
+  color: transparent; /* Hide placeholder text when focused */
+}
+
+/* Submit button styles */
+form .field input[type="submit"] {
+  width: 100%; /* Full width for button */
+  padding: 12px 20px; /* Button padding */
+  color: #fff; /* Text color for button */
+  font-size: 20px; /* Font size for button text */
+  border: none; /* Remove border */
+  border-radius: 25px; /* Rounded corners for button */
+  background: linear-gradient(-135deg, #c850c0, #4158d0); /* Gradient background */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: all 0.3s ease; /* Smooth transition for hover effects */
+}
+
+/* Hover effect for submit button */
+form .field input[type="submit"]:hover {
+  background: #4158d0; /* Darker background on hover */
+}
+
+/* Error message styles */
+.error {
+  color: red; /* Color for error messages */
+  font-size: 14px; /* Font size for error messages */
+  margin-top: 5px; /* Space above error messages */
+}
+.error {
+  color: red;
+  font-size: 0.9em;
+  margin-top: 5px;
+}
